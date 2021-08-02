@@ -1,0 +1,10 @@
+
+Step to prepare package : 
+
+Reference : https://packaging.python.org/tutorials/packaging-projects/
+# make sure you have the latest version of PyPA's build installed.
+python3 -m pip install --upgrade build 
+
+
+For the installing package , from local archives, from order placesss
+Reference : 

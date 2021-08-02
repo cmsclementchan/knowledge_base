@@ -13,6 +13,7 @@ class Person:
         Person.add_person()
 
     #not specific to the instance
+    #instead of taking self, taking cls...
     @classmethod
     def number_of_people_(cls):
         return cls.number_of_people
