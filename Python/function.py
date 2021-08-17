@@ -61,3 +61,9 @@ f(*a)
 print("\nexample for the doc string")
 ### docstring 
 print(f.__doc__)
+
+
+
+
+# for the *args and **kwargs in Python 
+# Reference : https://www.geeksforgeeks.org/args-kwargs-python/
