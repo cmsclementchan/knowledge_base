@@ -19,7 +19,7 @@ class Dog:
     def get_name(self):
         return self.name
     
-    #method
+    #method (instance method)
     def add_one(self,x):
         return x+1
 

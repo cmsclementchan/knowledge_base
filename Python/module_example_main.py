@@ -19,5 +19,5 @@ helpers.welcome()
 # reference 
 # https://www.youtube.com/watch?v=Uei2ILcxuPs
 
-# publish your own python package to pypi
+# publish your own python package to pypi (Python Package Index, pypi)
 # https://www.youtube.com/watch?v=tEFkHEKypLI
