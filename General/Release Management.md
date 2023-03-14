@@ -1,4 +1,14 @@
 
+# Pros & cons
+| Pros | Cons |
+| --- | --- |
+| 1. Faster time to market | 1. Higher risk of introducing bugs or breaking the build |
+| 2. Simple and straightforward workflow | 2. May result in more unstable code in the main branch due to frequent commits |
+| 3. Encourages continuous integration and delivery | 3. Requires a high level of communication and coordination among team members |
+| 4. Allows for quicker feedback loops | 4. May be challenging to roll back changes once they are committed to the main branch |
+| 5. Facilitates collaboration and knowledge sharing among team members | 5. Less emphasis on code review as changes are pushed directly to the main branch |
+
+
 # Can you compare Trunk-based and Branch-based?
 Trunk-based development and branch-based development are two different approaches to managing changes to a software codebase. Here are some key differences between the two:
 
