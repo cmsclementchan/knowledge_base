@@ -76,3 +76,96 @@ Overall, the choice between trunk-based and branch-based development depends on 
 **Continuous delivery (CD)**
 - Involves automatically deploying code changes to production as soon as they are tested and approved
 - By automating the deployment process, teams
+
+# can you provide some detailed example?
+Sure, here's an example of how a company might use trunk-based development:
+
+Suppose there's a software development company called XYZ that develops and maintains an e-commerce website. The company has a team of developers working on the website codebase, and they use trunk-based development to manage their workflow.
+
+Here's how they might go about it:
+
+They start with a mainline branch called "trunk," which contains the latest stable version of the codebase.
+
+Whenever a developer needs to make changes to the code, they create a feature branch off of the trunk branch. For example, a developer might create a branch called "feature/shipping-updates" to work on improving the shipping functionality of the website.
+
+The developer makes their changes on the feature branch and tests them locally to ensure everything is working as expected.
+
+Once the changes are complete and the tests pass, the developer merges their feature branch back into the trunk branch. This ensures that their changes are integrated into the latest stable version of the codebase.
+
+The company has a continuous integration (CI) pipeline set up that runs automated tests on the codebase every time a change is merged into the trunk branch. This helps to catch any issues early on and ensures that the codebase stays stable.
+
+If any issues are found, the developers can quickly fix them and merge the fixes back into the trunk branch. This keeps the codebase up-to-date and stable at all times.
+
+Overall, trunk-based development allows the XYZ development team to work collaboratively on the website codebase while ensuring that the code stays stable and up-to-date. By merging changes back into the mainline trunk branch as soon as they're complete, the team can avoid long-lived feature branches and reduce the risk of conflicts and integration issues down the line.
+
+
+
+# is that trunk branch as main branch to deploy?
+
+In trunk-based development, the trunk branch (also known as the mainline or master branch) is used as the main branch for development and deployment. All changes are integrated directly into the trunk branch, and there is no long-lived development branch.
+
+After a change is made and reviewed, it is merged directly into the trunk branch. This means that the trunk branch is always in a releasable state, and any change made to it is considered production-ready.
+
+When a release is needed, a new version is created from the trunk branch. This version is then deployed to the production environment.
+
+So to answer your question, yes, in trunk-based development, the trunk branch is typically used as the main branch for deployment.
+
+
+# how to do everything using github?
+Sure! Here are some steps to follow for using trunk-based development with GitHub:
+
+Create a new repository on GitHub.
+Set up your development environment and create a new branch to start working on a new feature or bug fix.
+Make changes to the code on your branch and commit them to the branch.
+Once the feature or bug fix is complete, push the changes to the branch on GitHub.
+Create a pull request to merge your branch into the main branch (trunk) on GitHub.
+Assign a reviewer to review the code changes and provide feedback or approve the changes.
+Once the changes have been approved, merge the branch into the main branch (trunk) on GitHub.
+Deploy the changes to your production environment.
+It's important to note that you should only merge code changes into the main branch (trunk) once they have been fully tested and approved. This helps to ensure that your production environment remains stable and bug-free.
+
+# What is the use of the release in github ?
+In GitHub, a release is a way to package and distribute a specific version of your project. It is a snapshot of your code at a particular point in time, along with any associated assets such as binaries, documentation, and release notes.
+
+Releases provide a way for users to easily download and install your project's software, without having to build it themselves. They also enable you to communicate important information about the release, such as new features, bug fixes, and breaking changes.
+
+When you create a release in GitHub, you can assign a version number to it, which helps to keep track of different versions of your software. You can also add release notes, which describe the changes in the release, and attach any relevant files, such as installers or documentation.
+
+Releases are useful for open source projects that have a community of contributors and users. By making it easy for people to download and use your software, you can increase the reach and impact of your project.
+
+# What is the difference of unit test, integration and functional test?
+Unit tests, integration tests, and functional tests are different types of tests that are used in software development. Here is a brief explanation of each:
+
+Unit Tests: Unit tests are automated tests that verify the behavior of a small piece of code, such as a function or method, in isolation from the rest of the application. The goal of unit testing is to catch errors and bugs early in the development cycle and ensure that each individual component of the application works as intended.
+
+Integration Tests: Integration tests are automated tests that verify the interaction between different components or modules of the application. The goal of integration testing is to catch errors and bugs that arise when different components are combined together, and to ensure that the application as a whole works as intended.
+
+Functional Tests: Functional tests are automated tests that verify the behavior of the application as a whole, by testing its functionality from the user's perspective. The goal of functional testing is to ensure that the application meets its intended requirements and performs as expected in real-world scenarios.
+
+In summary, unit tests focus on individual pieces of code, integration tests focus on the interaction between different pieces of code, and functional tests focus on the behavior of the application as a whole. All three types of tests are important for ensuring the quality and reliability of software.
+
+
+
+# Workflow Diagram
+https://trunkbaseddevelopment.com/styles/
+
+
+Reference 
+
+truck based development
+
+https://www.atlassian.com/continuous-delivery/software-delivery-trunk-based-development
+https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development
+
+book like
+
+https://trunkbaseddevelopment.com/
+
+branchbyabstraction....
+
+https://www.branchbyabstraction.com/
+
+
+
+gitflow
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
