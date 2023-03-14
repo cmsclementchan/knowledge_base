@@ -14,6 +14,18 @@ Complexity: Branch-based development can be more complex than trunk-based develo
 
 Overall, the choice between trunk-based and branch-based development depends on the specific needs and goals of your project. Trunk-based development can be a good choice for projects with a small team or a simple codebase, where speed is important. Branch-based development can be a good choice for projects with a large team or a complex codebase, where collaboration and code stability are important.
 
+| Aspect | Trunk-Based Development | Branch-Based Development |
+| --- | --- | --- |
+| Workflow | Continuous integration and delivery with frequent code commits directly to the main branch | Code development is done on separate branches and merged back into the main branch when ready |
+| Team collaboration | Requires a high level of communication and coordination among team members | Allows for more independent work among team members |
+| Release frequency | Frequent releases with smaller changes | Less frequent releases with larger changes |
+| Code stability | May result in more unstable code in the main branch due to frequent commits | Code changes are isolated to branches until they are deemed stable |
+| Code review | Less emphasis on code review as changes are pushed directly to the main branch | Allows for more thorough code review on separate branches |
+| Risk management | Risk of introducing bugs or breaking the build is higher due to frequent commits to the main branch | Risk of introducing bugs or breaking the build is reduced as changes are isolated to branches |
+| Time to market | Faster time to market as code changes are quickly integrated into the main branch | Slower time to market due to the need for code review and integration |
+| Complexity | Simple and straightforward workflow | Requires more complex management of multiple branches |
+
+
 
 # Trunk Based Development
 
