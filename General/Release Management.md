@@ -9,6 +9,12 @@
 | 5. Facilitates collaboration and knowledge sharing among team members | 5. Less emphasis on code review as changes are pushed directly to the main branch |
 
 
+Company 
+
+https://devblogs.microsoft.com/devops/release-flow-how-we-do-branching-on-the-vsts-team/
+
+
+
 # Can you compare Trunk-based and Branch-based?
 Trunk-based development and branch-based development are two different approaches to managing changes to a software codebase. Here are some key differences between the two:
 
@@ -171,6 +177,65 @@ In summary, unit tests focus on individual pieces of code, integration tests foc
 # Workflow Diagram
 https://trunkbaseddevelopment.com/styles/
 
+
+# How to do it in action?
+
+https://launchdarkly.com/blog/introduction-to-trunk-based-development/
+
+# People Expereince 
+https://www.reddit.com/r/ExperiencedDevs/comments/zg4l6h/handling_releases_and_qa_environments_while_using/
+
+Our the workflow Ive implemented looks like exactly like what you’re looking for.
+
+Previously were were using feature branches, staging branches and a production branch, with a develop branch. Changes would be made to a feature branch, then when reviewed and ready for QA would be merged into the staging branch, so it could be tested by QA. Once approved, it’d be merged into develop, which was then merged into production at the end of the sprint. This didn’t work well for many reasons.
+
+We’ve now moved to TBD and continuous delivery. It works like:
+
+Developer makes a PR for a change
+
+2 Developers review the change
+
+Once passed code review, we add a label to the PR to deploy it to a QA environment
+
+We run a QA environment on K8S which will create a deployment for each PR. This creates a branch new environment, very similar to staging, but with its own ephemeral database and AWS infra using Localstack. Any tagged PRs will automatically be deployed to this environment, and the deployment deleted once the PR is closed
+
+Once the change is approved by QA, the PR is merged to our trunk branch, where it automatically deploys to staging
+
+Once deployed to staging, we run thousands of acceptance E2E tests against the whole system, and now some Cypress tests against the frontend
+
+Once the tests have passed, we run a manual deployment to production, using the version number that was deployed to staging. We can specify any version number here, so it can help for rollbacks too. The version number refers to a docker image that was built before the staging deployment, so it ensures we’re using exactly the same build across environments
+
+We aim to deploy every staging deployment to production shortly after, so we do about 5-10 prod deployments a week
+
+This seems to be working very well, and we’ve had no production incidents since implementing it. It allows us to deploy hotfixes very fast as the trunk should always be in a deployable state. The only way it wouldn’t be is if the acceptance tests failed, then we’d probably revert the merged change in order to make it deployable asap. Ideally we’d be running the acceptance tests against the QA environment before merging, and not just against staging, but there’s legacy reasons why this isn’t possible.
+
+I can go into more detail on our implementation of the QA environment if you like, as that’s been the key to all this
+
+EDIT: Just to add, we also make use of feature flags where necessary so that we aren’t holding large changes back from production, as in the past these have often caused problems and been hard to debug. So we aim to split features into lots of small parts and deploy them incrementally, only releasing via feature flag once they’ve been verified to work in production
+
+
+# Can you also explain more with leveraging the feature in github for the workflow?
+Sure, here's how you can leverage some of the features in GitHub for the trunk-based development workflow:
+
+Create a new branch from the trunk branch using the "git checkout -b" command.
+
+Once you've made your changes, create a pull request (PR) using GitHub's built-in PR functionality.
+
+Use the code review features in GitHub to collaborate with your team members and ensure that the code meets the necessary quality standards.
+
+If you're using continuous integration (CI), set up your CI tool to automatically run tests and checks on the code as part of the PR process.
+
+Use GitHub's labels and milestones to track the status of the PR and ensure that it's being reviewed and tested in a timely manner.
+
+Once the code has been approved by your team, merge the changes into the trunk branch using GitHub's merge functionality.
+
+If you're using deployment automation, use GitHub's webhooks to trigger automated deployments to your various environments (e.g. QA, staging, production) when code is merged into the trunk branch.
+
+Use GitHub's release functionality to tag specific commits as releases, making it easier to track which versions of the code are deployed to which environments.
+
+Finally, use GitHub's issue tracking functionality to track any issues that arise in your various environments, and use pull requests to make changes to fix those issues and merge them back into the trunk branch.
+
+By leveraging these features in GitHub, you can streamline your trunk-based development workflow and ensure that your code is being reviewed, tested, and deployed in a consistent and efficient manner.
 
 Reference 
 
